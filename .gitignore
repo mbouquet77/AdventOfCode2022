@@ -1,0 +1,14 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/Day1/AOC2022Day1/.vs
+/.vs
+/Day1/AOC2022Day1/obj
+/obj
+/Commons/bin/Debug/net6.0
+/Commons/obj
+/Commons/Commons.csproj
+/bin/Debug/net6.0
+/Commons/.vs/Commons
+/Day1/AOC2022Day1/bin/Debug/net6.0
