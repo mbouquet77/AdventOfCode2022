@@ -42,5 +42,29 @@ namespace AOC2022TestProject
             var result = _sectionAssignment.GetHowManyAssignmentsContainTheOther(_lines);
             Check.That(result).IsEqualTo(2);
         }
+
+        [Fact]
+        public void DoAssignmentPairsOverlapTest()
+        {
+            var doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[0]);
+            Check.That(doAssignmentPairsOverlap).IsFalse();
+            doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[1]);
+            Check.That(doAssignmentPairsOverlap).IsFalse();
+            doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[2]);
+            Check.That(doAssignmentPairsOverlap).IsTrue();
+            doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[3]);
+            Check.That(doAssignmentPairsOverlap).IsTrue();
+            doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[4]);
+            Check.That(doAssignmentPairsOverlap).IsTrue();
+            doAssignmentPairsOverlap = _sectionAssignment.DoAssignmentPairsOverlap(_lines[5]);
+            Check.That(doAssignmentPairsOverlap).IsTrue();
+        }
+
+        [Fact]
+        public void GetHowManyAssignmentPairsOverlapTest()
+        {
+            var result = _sectionAssignment.GetHowManyAssignmentPairsOverlap(_lines);
+            Check.That(result).IsEqualTo(4);
+        }
     }
 }
