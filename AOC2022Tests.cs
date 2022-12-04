@@ -38,35 +38,6 @@ namespace AOC2022TestProject
             Check.That(topThreeCaloriesSum).IsEqualTo(45000);
         }
 
- /*       [Fact]
-        public void RockPaperScissorTests()
-        {
-            var lines = new string[]
-            {
-                "A Y",
-                "B X",
-                "C Z"
-            };
-            var rockPaperScissor = new RockPaperScissor();
-            var result = rockPaperScissor.CountScore(lines);
-            Check.That(result).IsEqualTo(15);
-            var line = lines[0];
-            var myScore = rockPaperScissor.GetMyScore(line);
-            Check.That(myScore).IsEqualTo(2);
-            var outcomeScore = rockPaperScissor.GetOutcomeScore(line);
-            Check.That(outcomeScore).IsEqualTo(6);
-            line = lines[1];
-            myScore = rockPaperScissor.GetMyScore(line);
-            Check.That(myScore).IsEqualTo(1);
-            outcomeScore = rockPaperScissor.GetOutcomeScore(line);
-            Check.That(outcomeScore).IsEqualTo(0);
-            line = lines[2];
-            myScore = rockPaperScissor.GetMyScore(line);
-            Check.That(myScore).IsEqualTo(3);
-            outcomeScore = rockPaperScissor.GetOutcomeScore(line);
-            Check.That(outcomeScore).IsEqualTo(3);
-        }*/
-
         [Fact]
         public void ItemsInRucksakPart1Tests()
         {
