@@ -22,6 +22,7 @@ class Program
 
     private static void Part2(string[] lines)
     {
-        Console.WriteLine("");
+        var result = _sectionAssignment.GetHowManyAssignmentPairsOverlap(lines);
+        Console.WriteLine(result);
     }
 }
