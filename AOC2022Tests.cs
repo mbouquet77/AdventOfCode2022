@@ -1,5 +1,4 @@
 using AOC2022Day1;
-using AOC2022Day2;
 using AOC2022Day3;
 using NFluent;
 using Xunit;
@@ -39,7 +38,7 @@ namespace AOC2022TestProject
             Check.That(topThreeCaloriesSum).IsEqualTo(45000);
         }
 
-        [Fact]
+ /*       [Fact]
         public void RockPaperScissorTests()
         {
             var lines = new string[]
@@ -66,7 +65,7 @@ namespace AOC2022TestProject
             Check.That(myScore).IsEqualTo(3);
             outcomeScore = rockPaperScissor.GetOutcomeScore(line);
             Check.That(outcomeScore).IsEqualTo(3);
-        }
+        }*/
 
         [Fact]
         public void ItemsInRucksakPart1Tests()

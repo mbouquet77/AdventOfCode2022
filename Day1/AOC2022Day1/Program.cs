@@ -3,7 +3,6 @@ using AOC2022Day1;
 
 class Program
 {
-
     static void Main()
     {
         var aocFiles = new AocFiles();

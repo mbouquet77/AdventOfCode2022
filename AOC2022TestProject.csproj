@@ -13,14 +13,17 @@
     <Compile Remove="Day1\**" />
     <Compile Remove="Day2\**" />
     <Compile Remove="Day3\**" />
+    <Compile Remove="Day4\**" />
     <EmbeddedResource Remove="Commons\**" />
     <EmbeddedResource Remove="Day1\**" />
     <EmbeddedResource Remove="Day2\**" />
     <EmbeddedResource Remove="Day3\**" />
+    <EmbeddedResource Remove="Day4\**" />
     <None Remove="Commons\**" />
     <None Remove="Day1\**" />
     <None Remove="Day2\**" />
     <None Remove="Day3\**" />
+    <None Remove="Day4\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +47,7 @@
   <ItemGroup>
     <ProjectReference Include="Day1\AOC2022Day1\AOC2022Day1.csproj" />
     <ProjectReference Include="Day3\AOC2022Day3\AOC2022Day3.csproj" />
+    <ProjectReference Include="Day4\AOC2022Day4\AOC2022Day4.csproj" />
   </ItemGroup>
 
 </Project>
