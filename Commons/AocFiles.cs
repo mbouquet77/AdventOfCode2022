@@ -4,7 +4,7 @@
     {
         public string[] GetArrayFromFile()
         {
-            return File.ReadAllLines(@"..\..\..\..\input.txt");
+            return File.ReadAllLines(@"..\..\..\input.txt");
         }
     }
 }

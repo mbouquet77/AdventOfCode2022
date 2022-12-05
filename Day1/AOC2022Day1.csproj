@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Commons\Commons.csproj" />
+    <Compile Remove="AOC2022Day1\**" />
+    <EmbeddedResource Remove="AOC2022Day1\**" />
+    <None Remove="AOC2022Day1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\Commons.csproj" />
   </ItemGroup>
 
 </Project>
