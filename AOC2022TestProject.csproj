@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,16 +14,19 @@
     <Compile Remove="Day2\**" />
     <Compile Remove="Day3\**" />
     <Compile Remove="Day4\**" />
+    <Compile Remove="Day5\**" />
     <EmbeddedResource Remove="Commons\**" />
     <EmbeddedResource Remove="Day1\**" />
     <EmbeddedResource Remove="Day2\**" />
     <EmbeddedResource Remove="Day3\**" />
     <EmbeddedResource Remove="Day4\**" />
+    <EmbeddedResource Remove="Day5\**" />
     <None Remove="Commons\**" />
     <None Remove="Day1\**" />
     <None Remove="Day2\**" />
     <None Remove="Day3\**" />
     <None Remove="Day4\**" />
+    <None Remove="Day5\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +52,7 @@
     <ProjectReference Include="Day2\AOC2022Day2\AOC2022Day2.csproj" />
     <ProjectReference Include="Day3\AOC2022Day3\AOC2022Day3.csproj" />
     <ProjectReference Include="Day4\AOC2022Day4\AOC2022Day4.csproj" />
+    <ProjectReference Include="Day5\AOC2022Day5\AOC2022Day5.csproj" />
   </ItemGroup>
 
 </Project>
