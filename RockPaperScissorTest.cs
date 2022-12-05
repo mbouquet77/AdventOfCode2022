@@ -82,5 +82,37 @@ namespace AOC2022TestProject
             var result = _rockPaperScissor.GetTotalScore(_lines);
             Check.That(result).IsEqualTo(15);
         }
+
+        [Fact]
+        public void GetNeededHandTest()
+        {
+            var handNeeded = _rockPaperScissor.GetNeededHand(_lines[0], out HandResult neededResult);
+            Check.That(handNeeded).IsEqualTo(ShapeEnum.Rock);
+            Check.That(neededResult).IsEqualTo(HandResult.Equality);
+            handNeeded = _rockPaperScissor.GetNeededHand(_lines[1], out neededResult);
+            Check.That(handNeeded).IsEqualTo(ShapeEnum.Rock);
+            Check.That(neededResult).IsEqualTo(HandResult.Lose);
+            handNeeded = _rockPaperScissor.GetNeededHand(_lines[2], out neededResult);
+            Check.That(handNeeded).IsEqualTo(ShapeEnum.Rock);
+            Check.That(neededResult).IsEqualTo(HandResult.Win);
+        }
+
+        [Fact]
+        public void GeTotalNeededLineScoreTest()
+        {
+            var totalNeededLineScore = _rockPaperScissor.GetNeededLineScore(_lines[0]);
+            Check.That(totalNeededLineScore).IsEqualTo(4);
+            totalNeededLineScore = _rockPaperScissor.GetNeededLineScore(_lines[1]);
+            Check.That(totalNeededLineScore).IsEqualTo(1);
+            totalNeededLineScore = _rockPaperScissor.GetNeededLineScore(_lines[2]);
+            Check.That(totalNeededLineScore).IsEqualTo(7);
+        }
+
+        [Fact]
+        public void GeTotalNeededTotalLineScoreTest()
+        {
+            var totalNeededLineScore = _rockPaperScissor.GetTotalNeededScore(_lines);
+            Check.That(totalNeededLineScore).IsEqualTo(12);
+        }
     }
 }

@@ -21,6 +21,8 @@ class Program
 
     private static void Part2(string[] lines)
     {
-        Console.WriteLine("");
+        var rockPaperScissor = new RockPaperScissor();
+        var totalScore = rockPaperScissor.GetTotalNeededScore(lines);
+        Console.WriteLine(totalScore);
     }
 }

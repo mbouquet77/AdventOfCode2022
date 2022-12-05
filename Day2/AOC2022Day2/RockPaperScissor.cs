@@ -91,6 +91,84 @@
             }
             return total;
         }
+
+        public HandResult GetNeededResult(string myHand)
+        {
+            return myHand switch
+            {
+                "X" => HandResult.Lose,
+                "Y" => HandResult.Equality,
+                "Z" => HandResult.Win,
+                _ => throw new Exception()
+            };
+        }
+
+        public ShapeEnum GetNeededHand(string line, out HandResult neededResult)
+        {
+            var hands = line.Split(' ');
+            var opponentShape = GetOpponentShape(hands[0]);
+            neededResult = GetNeededResult(hands[1]);
+
+            switch (neededResult)
+            {
+                case HandResult.Equality:
+                    return opponentShape;
+                case HandResult.Lose:
+                    switch (opponentShape)
+                    {
+                        case ShapeEnum.Rock:
+                            return ShapeEnum.Scissors;
+                        case ShapeEnum.Paper:
+                            return ShapeEnum.Rock;
+                        case ShapeEnum.Scissors:
+                            return ShapeEnum.Paper;
+                    };
+                    throw new Exception();
+                case HandResult.Win:
+                    switch (opponentShape)
+                    {
+                        case ShapeEnum.Rock:
+                            return ShapeEnum.Paper;
+                        case ShapeEnum.Paper:
+                            return ShapeEnum.Scissors;
+                        case ShapeEnum.Scissors:
+                            return ShapeEnum.Rock;
+                    }
+                    throw new Exception();
+            }
+            throw new Exception("not implemented case");
+        }
+
+        public int GetNeededLineScore(string line)
+        {
+            var neededHand = GetNeededHand(line, out HandResult neededResult);
+            var myScore = neededHand switch
+            {
+                ShapeEnum.Rock => 1,
+                ShapeEnum.Paper => 2,
+                ShapeEnum.Scissors => 3,
+                _ => 0,
+            };
+
+            var outcomeScore = neededResult switch
+            {
+                HandResult.Equality => 3,
+                HandResult.Win => 6,
+                _ => 0,
+            };
+
+            return myScore + outcomeScore;
+        }
+
+        public int GetTotalNeededScore(string[] lines)
+        {
+            var totalScore = 0;
+            foreach (var line in lines)
+            {
+                totalScore += GetNeededLineScore(line);
+            }
+            return totalScore;
+        }
     }
 
     public enum ShapeEnum
