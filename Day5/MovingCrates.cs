@@ -2,12 +2,9 @@
 {
     public class MovingCrates
     {
-        public List<List<string>> ApplyInstruction(List<List<string>> input, string instruction)
+        public List<List<string>> ApplyInstructionMovingOneAtATime(List<List<string>> input, string instruction)
         {
-            var details = instruction.Split(' ');
-            var nbCratesToMove = int.Parse(details[1]);
-            var source = int.Parse(details[3]);
-            var dest = int.Parse(details[5]);
+            GetInstructionDetails(instruction, out int nbCratesToMove, out int source, out int dest);
             var newDestLine = new List<string>();
             var newSourceLine = new List<string>();
             newDestLine.AddRange(input[dest - 1]);
@@ -26,7 +23,7 @@
 
         public string GetMessage(List<string> input, List<string> instructions)
         {
-            var lastInput = Rearrangement(input, instructions);
+            var lastInput = RearrangementMovingOneAtATime(input, instructions);
             var message = string.Empty;
             foreach (var line in lastInput)
             {
@@ -57,14 +54,62 @@
             return result;
         }
 
-        public List<List<string>> Rearrangement(List<string> input, List<string> instructions)
+        public List<List<string>> RearrangementMovingOneAtATime(List<string> input, List<string> instructions)
         {
             var myInputList = GetMyInputList(input);
             foreach(var instruction in instructions)
             {
-                myInputList = ApplyInstruction(myInputList, instruction);
+                myInputList = ApplyInstructionMovingOneAtATime(myInputList, instruction);
             }
             return myInputList;
+        }
+
+        public List<List<string>> RearrangementMovingAllAtOnce(List<string> input, List<string> instructions)
+        {
+            var myInputList = GetMyInputList(input);
+            foreach (var instruction in instructions)
+            {
+                myInputList = ApplyInstructionMovingAllAtOnce(myInputList, instruction);
+            }
+            return myInputList;
+        }
+
+        public List<List<string>> ApplyInstructionMovingAllAtOnce(List<List<string>> input, string instruction)
+        {
+            GetInstructionDetails(instruction, out int nbCratesToMove, out int source, out int dest);
+            var newDestLine = new List<string>();
+            var newSourceLine = new List<string>();
+            newDestLine.AddRange(input[dest - 1]);
+            newSourceLine.AddRange(input[source - 1]);
+
+            var rangeToMove = newSourceLine.GetRange(newSourceLine.Count - nbCratesToMove, nbCratesToMove);
+            newDestLine.AddRange(rangeToMove);
+            for (int i = 0; i < nbCratesToMove; i++)
+            {
+                newSourceLine.RemoveAt(newSourceLine.Count() - 1);
+            }
+            input[dest - 1] = newDestLine;
+            input[source - 1] = newSourceLine;
+            return input;
+        }
+
+        private static void GetInstructionDetails(string instruction, out int nbCratesToMove, out int source, out int dest)
+        {
+            var details = instruction.Split(' ');
+            nbCratesToMove = int.Parse(details[1]);
+            source = int.Parse(details[3]);
+            dest = int.Parse(details[5]);
+        }
+
+        public string GetMessageWhenMovingAllAtOnce(List<string> input, List<string> instructions)
+        {
+            var lastInput = RearrangementMovingAllAtOnce(input, instructions);
+            var message = string.Empty;
+            foreach (var line in lastInput)
+            {
+                message += line.Last();
+            }
+            return message;
         }
     }
 }

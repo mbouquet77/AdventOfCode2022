@@ -30,7 +30,7 @@ class Program
 
         Part1(input, instructions);
         Console.WriteLine("");
-        Part2(lines);
+        Part2(input, instructions);
     }
 
     private static void Part1(List<string> input, List<string> instructions)
@@ -39,7 +39,9 @@ class Program
         Console.WriteLine(message);
     }
 
-    private static void Part2(string[] lines)
+    private static void Part2(List<string> input, List<string> instructions)
     {
+        var message = _movingCrates.GetMessageWhenMovingAllAtOnce(input, instructions);
+        Console.WriteLine(message);
     }
 }

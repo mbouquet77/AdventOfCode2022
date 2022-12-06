@@ -60,7 +60,7 @@ namespace AOC2022TestProject
                 }
             };
             
-            var newImput = _movingCrates.ApplyInstruction(myInput, _instructions[0]);
+            var newImput = _movingCrates.ApplyInstructionMovingOneAtATime(myInput, _instructions[0]);
             Check.That(newImput).IsEqualTo(expectedInput);
 
             expectedInput = new List<List<string>>()
@@ -78,7 +78,7 @@ namespace AOC2022TestProject
                 }
             };
             
-            newImput = _movingCrates.ApplyInstruction(newImput, _instructions[1]);
+            newImput = _movingCrates.ApplyInstructionMovingOneAtATime(newImput, _instructions[1]);
             Check.That(newImput).IsEqualTo(expectedInput);
         }
 
@@ -101,15 +101,105 @@ namespace AOC2022TestProject
                 }
             };
 
-            var lastInput = _movingCrates.Rearrangement(_input, _instructions);
+            var lastInput = _movingCrates.RearrangementMovingOneAtATime(_input, _instructions);
             Check.That(lastInput).IsEqualTo(expectedInput);
         }
 
         [Fact]
-        public void GetMessage()
+        public void GetMessageTest()
         {
             var message = _movingCrates.GetMessage(_input, _instructions);
             Check.That(message).IsEqualTo("CMZ");
         }
-   }
+
+        [Fact]
+        public void GetMyInputListWhenMovingAllAtOnceTest()
+        {
+            var expectedInput = new List<List<string>>()
+            {
+                new List<string>()
+                {
+                    "Z", "N"
+                },
+                new List<string>()
+                {
+                    "M", "C", "D"
+                },
+                new List<string>()
+                {
+                    "P"
+                }
+            };
+
+            var myInput = _movingCrates.GetMyInputList(_input);
+            Check.That(myInput).IsEqualTo(expectedInput);
+
+            expectedInput = new List<List<string>>()
+            {
+                new List<string>()
+                {
+                    "Z", "N", "D"
+                },
+                new List<string>()
+                {
+                    "M", "C"
+                },
+                new List<string>()
+                {
+                    "P"
+                }
+            };
+
+            var newImput = _movingCrates.ApplyInstructionMovingAllAtOnce(myInput, _instructions[0]);
+            Check.That(newImput).IsEqualTo(expectedInput);
+
+            expectedInput = new List<List<string>>()
+            {
+                new List<string>()
+                {
+                },
+                new List<string>()
+                {
+                    "M", "C"
+                },
+                new List<string>()
+                {
+                    "P", "Z", "N", "D"
+                }
+            };
+
+            newImput = _movingCrates.ApplyInstructionMovingAllAtOnce(newImput, _instructions[1]);
+            Check.That(newImput).IsEqualTo(expectedInput);
+        }
+        [Fact]
+        public void RearrangementWhenMovingAllAtOnceTest()
+        {
+            var expectedInput = new List<List<string>>()
+            {
+                new List<string>()
+                {
+                    "M"
+                },
+                new List<string>()
+                {
+                    "C"
+                },
+                new List<string>()
+                {
+                    "P", "Z", "N", "D"
+                }
+            };
+
+            var lastInput = _movingCrates.RearrangementMovingAllAtOnce(_input, _instructions);
+            Check.That(lastInput).IsEqualTo(expectedInput);
+        }
+
+        [Fact]
+        public void GetMessageWhenMovingAllAtOnceTest()
+        {
+            var message = _movingCrates.GetMessageWhenMovingAllAtOnce(_input, _instructions);
+            Check.That(message).IsEqualTo("MCD");
+        }
+
+    }
 }
